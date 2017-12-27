@@ -4,12 +4,16 @@
   "description": "code review",
   "main": "index.js",
   "scripts": {
-    "dev" : "webpack -d --watch",
-    "prod" : "webpack -p"
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p"
   },
-  "author": "Michael",
+  "author": "Michael Vasquez",
   "license": "ISC",
   "devDependencies": {
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
     "webpack": "^3.10.0"
   }
 }
