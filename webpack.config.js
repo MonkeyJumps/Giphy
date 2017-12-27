@@ -18,6 +18,11 @@ module.exports = {
                   publicPath:'/dist'
 
                 })
+              },
+              {
+                  test: /\.js$/,
+                  exclude:/node_modules/,
+                  use:'babel-loader'
               }
           
         ]
@@ -31,9 +36,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Giffy Code review',
-            minify: {
-                collapseWhitespace: true
-            },
+            // minify: {
+            //     collapseWhitespace: true
+            // },
             hash:true,
             template: './src/index.ejs', // Load a custom template (lodash by default see the FAQ for details)
         }),
