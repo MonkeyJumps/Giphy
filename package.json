@@ -1,0 +1,15 @@
+{
+  "name": "giphy",
+  "version": "1.0.0",
+  "description": "code review",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "webpack -d --watch",
+    "prod" : "webpack -p"
+  },
+  "author": "Michael",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
+}
