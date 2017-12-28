@@ -10,6 +10,7 @@ class Grid extends React.Component {
         this.state = {
             data: []
         }
+        this.onGifClick=this.onGifClick.bind(this);
     }
     componentDidMount() {
 
@@ -17,11 +18,9 @@ class Grid extends React.Component {
     }
 
     componentWillMount() {
-        //show trending to start
-        //const url = GIFFY_URL + "search?q=elf&api_key=" + API_KEY + "&limit=50";
-        const url = GIFFY_TRENDING_URL + "?api_key=" + API_KEY + "&limit=50";
+        //show trending to start        
+        const url = GIFFY_TRENDING_URL + "?api_key=" + API_KEY + "&limit=10";
         let data = [];
-
         Request(url,
             (json) => {
                 this.setState({ data: json.data });
@@ -44,12 +43,17 @@ class Grid extends React.Component {
             });
         }
     }
+    onGifClick(e){
+        console.log(e);
+        console.log("on gif click ", e.target.src);
+        window.open(e.target.src);
+    }
     render() {
         const { data } = this.state;                
 
         const CustomColumn = ({ value }) => <span style={{ color: '#0000AA' }}>{value}</span>;
         const CustomHeading = ({ title }) => <span style={{ color: '#AA0000' }}>{title}</span>;
-        const CustomImage = ({ value }) => <span style={{ color: '#0000AA' }}><img src={value} /></span>;
+        const CustomImage = ({ value }) => <span style={{ color: '#0000AA' }}><img src={value} onClick={this.onGifClick} /></span>;
         const NewLayout = ({ Table, Pagination, Filter, SettingsWrapper }) => (
             <div>
                 <Pagination />
