@@ -32,7 +32,7 @@ class Grid extends React.Component {
         console.log("updating:", nextProps);
         if( this.props.searchTerm !== nextProps.searchTerm){
         const newSearchTerm = nextProps.searchTerm.trim();
-        const url = `${GIFFY_URL}search?q=${newSearchTerm}&api_key=${API_KEY}&limit=50`;
+        const url = `${GIFFY_URL}search?q=${newSearchTerm}&api_key=${API_KEY}&limit=500`;
         Request(url,
             (json) => {
                 this.setState({ data: json.data });
