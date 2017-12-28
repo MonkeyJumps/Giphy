@@ -2,9 +2,11 @@ const css = require('./app.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Grid from './grid';
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <Grid />,
+  
   document.getElementById('root')
 );
 
