@@ -13,7 +13,6 @@ class Grid extends React.Component {
         this.onGifClick=this.onGifClick.bind(this);
     }
     componentDidMount() {
-
         console.log("mounted:used for testing.");
     }
 

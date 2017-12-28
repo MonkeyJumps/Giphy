@@ -10,7 +10,6 @@ class Main extends React.Component {
         this.onSearchTermChange = this.onSearchTermChange.bind(this);
     }
     onSearchTermChange(term){
-
         console.log("search term : ", term.target.value);
         this.setState({searchTerm: term.target.value});
     }
