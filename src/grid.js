@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { API_KEY, GIFFY_URL, GIFFY_TRENDING_URL } from './constants'
 import Griddle, { plugins, RowDefinition, ColumnDefinition } from 'griddle-react';
-import fetch from 'isomorphic-fetch';
+import { Request } from './request';
 
 class Grid extends React.Component {
     constructor(props) {
@@ -22,18 +22,31 @@ class Grid extends React.Component {
         const url = GIFFY_TRENDING_URL + "?api_key=" + API_KEY + "&limit=50";
         let data = [];
 
-        fetch(url) // Call the fetch function passing the url of the API as a parameter
-            .then(res => res.json())
-            .then(json => {
-                console.log(json);
+        Request(url,
+            (json) => {
                 this.setState({ data: json.data });
-            })
-            .catch(function (err) {
+            },
+            (error) => {
                 console.error(err);
             });
     }
+    componentWillUpdate(nextProps,nextState){
+        console.log("updating:", nextProps);
+        if( this.props.searchTerm !== nextProps.searchTerm){
+        const newSearchTerm = nextProps.searchTerm.trim();
+        const url = `${GIFFY_URL}search?q=${newSearchTerm}&api_key=${API_KEY}&limit=50`;
+        Request(url,
+            (json) => {
+                this.setState({ data: json.data });
+            },
+            (error) => {
+                console.error(err);
+            });
+        }
+    }
     render() {
-        const { data } = this.state;
+        const { data } = this.state;                
+
         const CustomColumn = ({ value }) => <span style={{ color: '#0000AA' }}>{value}</span>;
         const CustomHeading = ({ title }) => <span style={{ color: '#AA0000' }}>{title}</span>;
         const CustomImage = ({ value }) => <span style={{ color: '#0000AA' }}><img src={value} /></span>;

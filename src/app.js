@@ -2,10 +2,10 @@ const css = require('./app.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Grid from './grid';
+import Main from './main';
 
 ReactDOM.render(
-  <Grid />,
+  <Main />,
   
   document.getElementById('root')
 );
